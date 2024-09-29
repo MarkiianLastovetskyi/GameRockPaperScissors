@@ -22,35 +22,30 @@ def determine_winner(player_move, server_move):
     else:
         return "You lose!"
 
-# Ініціалізація сокету сервера
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# Прив'язка сокету до локального хоста та порту 12345
-server_socket.bind(('localhost', 12345))
-# Слухання вхідних з'єднань
-server_socket.listen(1)
-print("Server is listening on port 12345...")
+def start_server():
+    """Запускає сервер для обробки з'єднань."""
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('localhost', 12345))
+    server_socket.listen(1)
+    print("Server is listening on port 12345...")
 
-while True:
-    # Прийняття нового з'єднання
-    conn, addr = server_socket.accept()
-    print(f"Connection from {addr} has been established!")
+    while True:
+        conn, addr = server_socket.accept()
+        print(f"Connection from {addr} has been established!")
 
-    # Отримання даних від клієнта
-    data = conn.recv(1024).decode()
-    print(f"Received from client: {data}")
-    player_move = data.strip().lower()
-    # Випадковий вибір ходу сервера
-    server_move = random.choice(MOVES)
-    print(f"Server move: {server_move}")
-    # Визначення результату гри
-    result = determine_winner(player_move, server_move)
+        data = conn.recv(1024).decode()
+        print(f"Received from client: {data}")
+        player_move = data.strip().lower()
+        server_move = random.choice(MOVES)
+        print(f"Server move: {server_move}")
+        result = determine_winner(player_move, server_move)
 
-    # Створення XML відповіді
-    response = ET.Element('response')
-    ET.SubElement(response, 'player_move').text = player_move
-    ET.SubElement(response, 'server_move').text = server_move
-    ET.SubElement(response, 'result').text = result
-    # Відправка відповіді клієнту
-    conn.send(ET.tostring(response))
-    # Закриття з'єднання
-    conn.close()
+        response = ET.Element('response')
+        ET.SubElement(response, 'player_move').text = player_move
+        ET.SubElement(response, 'server_move').text = server_move
+        ET.SubElement(response, 'result').text = result
+        conn.send(ET.tostring(response))
+        conn.close()
+
+if __name__ == "__main__":
+    start_server()
