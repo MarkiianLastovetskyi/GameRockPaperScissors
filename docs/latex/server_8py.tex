@@ -1,0 +1,35 @@
+\doxysection{server.\+py File Reference}
+\hypertarget{server_8py}{}\label{server_8py}\index{server.py@{server.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceserver}{server}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceserver_afac206a1a0383411715ee7f2846fc1ca}{server.\+determine\+\_\+winner}} (\mbox{\hyperlink{namespaceserver_a332b6192fb3d592ae2a737ebcffd8dcc}{player\+\_\+move}}, \mbox{\hyperlink{namespaceserver_add8a61c3779c70c2e1deb1f4c3ba4330}{server\+\_\+move}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespaceserver_a33b6f9328a4833bd71eb05bc8cc848db}{server.\+MOVES}} = \mbox{[}\textquotesingle{}rock\textquotesingle{}, \textquotesingle{}paper\textquotesingle{}, \textquotesingle{}scissors\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceserver_adbb17fa9c60f12ed3ad451ea40650009}{server.\+server\+\_\+socket}} = socket.\+socket(socket.\+AF\+\_\+\+INET, socket.\+SOCK\+\_\+\+STREAM)
+\item 
+\mbox{\hyperlink{namespaceserver_ab5ee1f4585115a557bce2a6080949b75}{server.\+conn}}
+\item 
+\mbox{\hyperlink{namespaceserver_a478981dac844c1c3fc4dd94cb893f3e1}{server.\+addr}}
+\item 
+\mbox{\hyperlink{namespaceserver_a8b7790a9997c09aa90cf4a121a310d5c}{server.\+data}} = conn.\+recv(1024).decode()
+\item 
+\mbox{\hyperlink{namespaceserver_a332b6192fb3d592ae2a737ebcffd8dcc}{server.\+player\+\_\+move}} = data.\+strip().lower()
+\item 
+\mbox{\hyperlink{namespaceserver_add8a61c3779c70c2e1deb1f4c3ba4330}{server.\+server\+\_\+move}} = random.\+choice(\mbox{\hyperlink{namespaceserver_a33b6f9328a4833bd71eb05bc8cc848db}{MOVES}})
+\item 
+\mbox{\hyperlink{namespaceserver_a5e3081ef681b03c3f3773b3778467f7b}{server.\+result}} = \mbox{\hyperlink{namespaceserver_afac206a1a0383411715ee7f2846fc1ca}{determine\+\_\+winner}}(\mbox{\hyperlink{namespaceserver_a332b6192fb3d592ae2a737ebcffd8dcc}{player\+\_\+move}}, \mbox{\hyperlink{namespaceserver_add8a61c3779c70c2e1deb1f4c3ba4330}{server\+\_\+move}})
+\item 
+\mbox{\hyperlink{namespaceserver_a9e831deb0dc375e3b3bef926243cfa67}{server.\+response}} = ET.\+Element(\textquotesingle{}response\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespaceserver_a3e1f89ffdac4a158c9e83211d72c82b3}{server.\+text}}
+\end{DoxyCompactItemize}
